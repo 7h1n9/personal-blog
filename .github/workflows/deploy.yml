@@ -1,0 +1,61 @@
+# 工作流名称：部署到 GitHub Pages
+name: Deploy to GitHub Pages
+
+# 触发条件：当推送到 main 分支时运行
+on:
+  push:
+    branches: ["main"]
+
+# 权限设置：定义 GITHUB_TOKEN 的权限
+permissions:
+  contents: read           # 允许读取代码仓库内容
+  pages: write             # 允许写入 GitHub Pages（部署所需）
+  id-token: write          # 允许写入 OIDC 身份令牌（用于部署身份验证）
+
+# 并发控制：防止多个部署同时运行
+concurrency:
+  group: "pages"           # 将并发组命名为 "pages"
+  cancel-in-progress: false # 当前运行不取消进行中的部署，新任务将等待
+
+jobs:
+  # 构建作业：编译项目并上传构建产物
+  build:
+    runs-on: ubuntu-latest  # 使用最新 Ubuntu 运行器
+    steps:
+      # 步骤1：检出代码仓库
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 步骤2：设置 Node.js 环境
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20          # 使用 Node.js 20 版本（Vite 要求 20.19+）
+          cache: 'npm'               # 缓存 npm 依赖，加速后续构建
+
+      # 步骤3：安装依赖（使用 package-lock.json 确保一致性）
+      - name: Install dependencies
+        run: npm ci
+
+      # 步骤4：构建项目（执行 package.json 中的 build 脚本）
+      - name: Build
+        run: npm run build
+
+      # 步骤5：上传构建产物作为 artifact（供后续部署作业使用）
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'            # Vite 默认构建输出目录
+
+  # 部署作业：将构建产物发布到 GitHub Pages
+  deploy:
+    environment:
+      name: github-pages            # 环境名称，用于显示部署 URL
+      url: ${{ steps.deployment.outputs.page_url }}  # 部署完成后自动填充页面 URL
+    runs-on: ubuntu-latest
+    needs: build                     # 依赖 build 作业成功完成
+    steps:
+      # 步骤：将 artifact 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment               # 为步骤设置 ID，便于引用输出
+        uses: actions/deploy-pages@v4  # 使用官方部署动作
