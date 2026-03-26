@@ -1,0 +1,46 @@
+/* 整体页面布局：使用 CSS Grid 实现经典的三行两列结构（移动端适配） */
+.pageLayout {
+  display: grid;
+  /* 默认（桌面端）布局：
+     行1: header
+     行2: nav
+     行3: main + aside
+     行4: footer
+     列：左侧主内容 1fr，右侧侧边栏 300px
+  */
+
+  grid-template-columns: 1fr 300px;    /* 主内容自适应，侧边栏固定300px */
+  grid-template-rows: auto auto 1fr auto; /* 行高根据内容自适应 */
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "main sidebar"
+    "footer footer";
+  gap: 20px;                /* 网格间距 */
+  max-width: 1200px;
+  margin: 0 auto;           /* 居中 */
+  padding: 20px;
+  min-height: 100vh;        /* 保证 footer 在底部 */
+}
+
+/* 通过 grid-area 将各组件放置到对应区域 */
+:global(header) { grid-area: header; } 
+:global(nav) { grid-area: nav; }
+:global(main) { grid-area: main; }
+:global(aside) { grid-area: sidebar; }
+:global(footer) { grid-area: footer; }
+
+/* 响应式：当屏幕宽度小于 768px 时，改为单列布局 */
+@media (max-width: 768px) {
+  .pageLayout {
+    grid-template-columns: 1fr;          /* 单列 */
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+    gap: 15px;
+    padding: 15px;
+  }
+}
