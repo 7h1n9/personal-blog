@@ -42,8 +42,8 @@ const Sidebar: React.FC = () => {
       <section className={styles.widget}>
         <h3>合作伙伴</h3>
         <div className={styles.partners}>
-          <img src="https://via.placeholder.com/100x40?text=Partner1" alt="Partner 1" />
-          <img src="https://via.placeholder.com/100x40?text=Partner2" alt="Partner 2" />
+          <img src="https://p2.ssl.qhimg.com/t110b9a9301b1eebb48d70c3324.webp" alt="Partner 1" />
+          <img src="https://www.nsfocus.com.cn/uploadfile/2021/0310/20210310021835480.png" alt="Partner 2" />
         </div>
       </section>
     </aside>
