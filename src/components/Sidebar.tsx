@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Sidebar.module.css';
-import reactSvg from '../assets/react.svg';
+import reactSvg from '../assets/pc.png';
 
 const Sidebar: React.FC = () => {
   return (
@@ -42,8 +42,8 @@ const Sidebar: React.FC = () => {
       <section className={styles.widget}>
         <h3>合作伙伴</h3>
         <div className={styles.partners}>
-          <img src="https://p2.ssl.qhimg.com/t110b9a9301b1eebb48d70c3324.webp" alt="Partner 1" />
-          <img src="https://www.nsfocus.com.cn/uploadfile/2021/0310/20210310021835480.png" alt="Partner 2" />
+          <img src="https://p3.ssl.qhimg.com/t011e94f0b9ed8e66b0.webp" alt="Partner 1" />
+          <img src="https://passport.qianxin.com/img/logo.dd2e6edf.svg" alt="Partner 2" />
         </div>
       </section>
     </aside>
