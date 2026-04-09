@@ -1,60 +1,69 @@
 .main {
+  grid-area: main;
+  padding: 20px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
 }
 
 .article {
-  background: white;
+  background: var(--card-bg);
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
 }
 
 .articleHeader {
   margin-bottom: 15px;
-  border-bottom: 1px solid #eaecef;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px;
 }
 
 .articleHeader h2 {
   font-size: 1.8rem;
-  color: #2c3e50;
+  color: var(--text-color);
 }
 
 .articleHeader p {
-  color: #7f8c8d;
+  color: #666;
   font-size: 0.9rem;
+  margin-top: 5px;
 }
 
 .section {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .section h3 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 10px;
-  color: #34495e;
+  color: #2c3e50;
 }
 
 .section p {
+  line-height: 1.8;
+  color: var(--text-color);
   margin-bottom: 15px;
 }
 
 .codeBlock {
-  background: #f4f6f9;
+  background: var(--code-bg);
   padding: 15px;
-  border-radius: 6px;
+  border-radius: 5px;
   overflow-x: auto;
+  margin: 15px 0;
   font-family: 'Courier New', monospace;
-  font-size: 0.9rem;
-  border-left: 4px solid #3498db;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-left: 3px solid #3498db;
 }
 
 .articleFooter {
-  margin-top: 15px;
-  padding-top: 10px;
-  border-top: 1px dashed #eaecef;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
   font-size: 0.9rem;
 }
 
@@ -69,19 +78,19 @@
 
 /* 营销高亮 CTA 区域 */
 .highlightCta {
-  background: #fef9e7;
-  border: 1px solid #f1c40f;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 25px;
   border-radius: 8px;
-  padding: 15px 20px;
-  font-size: 1.1rem;
   text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  font-size: 1.1rem;
 }
 
 .mark {
   background: #f1c40f;
+  padding: 2px 5px;
+  border-radius: 3px;
   color: #2c3e50;
-  padding: 2px 6px;
-  border-radius: 4px;
   font-weight: bold;
 }
 
@@ -97,6 +106,10 @@
 
 /* 移动端调整 */
 @media (max-width: 768px) {
+  .main {
+    padding: 15px;
+  }
+  
   .article {
     padding: 15px;
   }

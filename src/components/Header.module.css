@@ -1,29 +1,51 @@
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 30px 20px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  grid-area: header;
+  background: var(--card-bg);
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  letter-spacing: -0.5px;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin: 0;
 }
 
 .header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
+  color: #7f8c8d;
+  margin: 0;
+  margin-left: auto;
+  margin-right: 15px;
 }
 
-/* 移动端微调 */
+.themeButton {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.themeButton:hover {
+  background: #2980b9;
+}
+
 @media (max-width: 768px) {
-  .header h1 {
-    font-size: 2rem;
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-  .header p {
-    font-size: 1rem;
+  
+  .header h1 {
+    font-size: 1.5rem;
   }
 }

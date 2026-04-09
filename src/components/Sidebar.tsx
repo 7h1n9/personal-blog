@@ -1,10 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Sidebar.module.css';
 import reactSvg from '../assets/pc.png';
 
-const Sidebar: React.FC = () => {
+// 定义 Props 类型，包含一个可选的函数
+interface SidebarProps {
+  onSubscribe?: (email: string) => void; // 接收一个函数，参数为邮箱，无返回值
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ onSubscribe }) => {
+  // 定义一个状态来存储当前时间
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    // 3. 组件挂载后，启动一个定时器，每秒更新时间
+    console.log("侧边栏组件已挂载，启动计时器...");
+    const timerId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    // 4. 组件卸载前，必须清除定时器！这是非常关键的"清理"操作
+    return () => {
+      console.log("侧边栏组件即将卸载，清除计时器...");
+      clearInterval(timerId);
+    };
+  }, []); // 空依赖数组，仅在挂载和卸载时执行
+
+  // 处理表单提交
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // 阻止表单的默认提交行为，防止页面刷新
+    // 使用 FormData 或者通过 ref 获取输入框的值
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('email') as string;
+
+    if (email && onSubscribe) {
+      onSubscribe(email); // 调用父组件传下来的函数，将数据传出去
+      event.currentTarget.reset(); // 清空表单
+    } else if (!email) {
+      alert('请输入邮箱地址');
+    }
+  };
+
   return (
     <aside className={styles.sidebar}>
+      {/* 在某个位置显示当前时间，作为演示 */}
+      <section className={styles.widget}>
+        <h3>当前时间</h3>
+        <p>{currentTime.toLocaleTimeString()}</p>
+      </section>
+
       {/* 作者简介（社交证明） */}
       <section className={styles.widget}>
         <h3>关于作者</h3>
@@ -32,8 +75,8 @@ const Sidebar: React.FC = () => {
       <section className={`${styles.widget} ${styles.ctaWidget}`}>
         <h3>订阅更新</h3>
         <p>获取最新的文章和技术干货，每周发送一次，随时退订。</p>
-        <form className={styles.subscribeForm}>
-          <input type="email" placeholder="你的邮箱" required />
+        <form className={styles.subscribeForm} onSubmit={handleSubmit}>
+          <input type="email" name="email" placeholder="你的邮箱" required />
           <button type="submit">订阅</button>
         </form>
       </section>
