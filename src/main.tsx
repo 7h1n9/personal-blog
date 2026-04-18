@@ -5,10 +5,12 @@ import { HelmetProvider } from 'react-helmet-async'; // ② 导入Helmet提供�
 import App from './App';
 import './index.css';
 
+const routerBase = import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '');
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>        {/* ③ 包裹HelmetProvider */}
-      <BrowserRouter basename="/route-dist">  {/* ④ basename与GitHub Pages仓库名一致 */}
+      <BrowserRouter basename={routerBase}>
         <App />
       </BrowserRouter>
     </HelmetProvider>
