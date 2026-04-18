@@ -1,0 +1,47 @@
+﻿.tiltCard {
+  --tilt-rotate-x: 0deg;
+  --tilt-rotate-y: 0deg;
+  --tilt-light-x: 50%;
+  --tilt-light-y: 50%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(980px) rotateX(var(--tilt-rotate-x)) rotateY(var(--tilt-rotate-y));
+  transition: transform 200ms ease, box-shadow 220ms ease;
+  will-change: transform;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(12px);
+}
+
+.glare {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--tilt-light-x) var(--tilt-light-y), rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0) 54%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.tiltCard:hover .glare {
+  opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .tiltCard {
+    transform: none !important;
+    transition: none;
+  }
+
+  .inner {
+    transform: none;
+  }
+
+  .glare {
+    display: none;
+  }
+}

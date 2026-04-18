@@ -1,13 +1,18 @@
-import React from 'react';
+﻿import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
+  const year = new Date().getFullYear();
+
   return (
     <footer className={styles.footer}>
-      <p>&copy; 2030 我的技术博客. 保留所有权利。</p>
-      <p>
-        <a href="/privacy">隐私政策</a> | <a href="/terms">使用条款</a>
-      </p>
+      <p>© {year} NEON STACK BLOG. Built for speed, clarity and future UI.</p>
+      <div className={styles.links}>
+        <Link to="/articles">文章矩阵</Link>
+        <Link to="/about">作者档案</Link>
+        <Link to="/subscribe">订阅通道</Link>
+      </div>
     </footer>
   );
 };

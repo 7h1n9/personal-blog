@@ -1,51 +1,104 @@
-.header {
-  grid-area: header;
-  background: var(--card-bg);
-  padding: 20px;
-  border-bottom: 1px solid var(--border-color);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+﻿.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 100%),
+    linear-gradient(110deg, rgba(18, 83, 255, 0.15) 0%, rgba(7, 196, 255, 0.1) 100%);
+  box-shadow: var(--shadow-card);
 }
 
-.header h1 {
-  font-size: 1.8rem;
-  color: #2c3e50;
-  margin: 0;
+.titleGroup {
+  min-width: 0;
 }
 
-.header p {
-  color: #7f8c8d;
-  margin: 0;
-  margin-left: auto;
-  margin-right: 15px;
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--accent-secondary);
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 52%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-secondary) 16%, transparent);
 }
 
-.themeButton {
-  background: #3498db;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
+.titleGroup h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 1.8vw, 2.05rem);
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+.titleGroup p {
+  margin-top: 0.45rem;
+  color: var(--text-secondary);
+  max-width: 52ch;
+  font-size: 0.95rem;
+}
+
+.headerPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--panel-bg-strong) 86%, transparent);
+  border: 1px solid var(--panel-border);
+  min-width: 235px;
+}
+
+.dateText {
+  font-weight: 600;
+  color: var(--text-primary);
   font-size: 0.9rem;
 }
 
-.themeButton:hover {
-  background: #2980b9;
+.signalText {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
 }
 
-@media (max-width: 768px) {
+.themeButton {
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent-text);
+  background: linear-gradient(115deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 40%, transparent);
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 220ms ease;
+}
+
+.themeButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--accent-secondary) 34%, transparent);
+}
+
+.themeButton:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 840px) {
   .header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
   }
-  
-  .header h1 {
-    font-size: 1.5rem;
+
+  .headerPanel {
+    align-items: flex-start;
+    width: 100%;
   }
 }

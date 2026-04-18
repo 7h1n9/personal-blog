@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1455FF"/>
+      <stop offset="1" stop-color="#33E3FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="26" fill="url(#bg)"/>
+  <circle cx="510" cy="85" r="58" fill="#FFFFFF" fill-opacity="0.22"/>
+  <circle cx="558" cy="302" r="96" fill="#FFFFFF" fill-opacity="0.12"/>
+  <text x="52" y="116" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">MBTI PROFILE</text>
+  <text x="52" y="210" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="120" font-weight="800" letter-spacing="10">ENFP</text>
+  <text x="52" y="274" fill="#FFFFFF" fill-opacity="0.9" font-family="Consolas, monospace" font-size="24">Explorer / Improviser / Connector</text>
+</svg>

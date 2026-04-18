@@ -1,0 +1,190 @@
+.terminalPlugin {
+  --terminal-bg: #0d0d0d;
+  --terminal-fg: #33ff00;
+  --terminal-border: rgba(51, 255, 0, 0.35);
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid var(--terminal-border);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% -10%, color-mix(in srgb, var(--term-glow) 45%, transparent) 0%, transparent 52%),
+    linear-gradient(160deg, color-mix(in srgb, #0c1227 45%, var(--terminal-bg)) 0%, var(--terminal-bg) 100%);
+  box-shadow:
+    0 14px 36px color-mix(in srgb, var(--term-glow) 35%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--term-glow) 20%, transparent);
+}
+
+.terminalPlugin[data-palette='amber'] {
+  --terminal-bg: #1a1a1a;
+  --terminal-fg: #ffb000;
+  --terminal-border: rgba(255, 176, 0, 0.35);
+}
+
+.terminalPlugin[data-palette='cyber'] {
+  --terminal-bg: #060b1e;
+  --terminal-fg: #19f7ff;
+  --terminal-border: rgba(25, 247, 255, 0.35);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 46px;
+  padding: 0.55rem 0.68rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--terminal-border) 86%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--terminal-bg) 72%, #f5f5f5 2%) 0%,
+    color-mix(in srgb, var(--terminal-bg) 96%, transparent) 100%
+  );
+}
+
+.windowButtons {
+  display: inline-flex;
+  gap: 0.32rem;
+}
+
+.windowButtons span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--terminal-fg) 72%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--term-glow) 52%, transparent);
+}
+
+.toolbarTitle {
+  margin: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--terminal-fg) 82%, #fff);
+}
+
+.paletteButtons {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.paletteButton {
+  border: 1px solid color-mix(in srgb, var(--terminal-border) 82%, transparent);
+  background: color-mix(in srgb, var(--terminal-bg) 74%, transparent);
+  color: color-mix(in srgb, var(--terminal-fg) 78%, #fff);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.65rem;
+  border-radius: 999px;
+  padding: 0.26rem 0.54rem;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.paletteButton:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--terminal-fg) 56%, transparent);
+}
+
+.paletteButtonActive {
+  background: color-mix(in srgb, var(--term-glow) 28%, var(--terminal-bg));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--term-glow) 42%, transparent);
+  border-color: color-mix(in srgb, var(--terminal-fg) 62%, transparent);
+}
+
+.terminalFrame {
+  position: relative;
+  min-height: 320px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--terminal-bg) 85%, #050505 15%) 0%, var(--terminal-bg) 100%);
+}
+
+.terminalHost {
+  position: relative;
+  z-index: 2;
+  height: 320px;
+  padding: 0.46rem 0.38rem 0.35rem;
+}
+
+.terminalHost :global(.xterm) {
+  height: 100%;
+  color: var(--terminal-fg);
+}
+
+.terminalHost :global(.xterm .xterm-viewport) {
+  background: transparent !important;
+}
+
+.terminalHost :global(.xterm .xterm-screen canvas) {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--term-glow) 80%, transparent));
+}
+
+.terminalHost :global(.xterm .xterm-cursor-layer .xterm-cursor.xterm-cursor-block) {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--term-glow) 95%, transparent);
+}
+
+.scanlineLayer,
+.vignetteLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scanlineLayer {
+  z-index: 3;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.06) 0,
+    rgba(255, 255, 255, 0.06) 1px,
+    rgba(0, 0, 0, 0) 3px,
+    rgba(0, 0, 0, 0) 5px
+  );
+  mix-blend-mode: screen;
+  opacity: 0.26;
+  animation: scanlineShift 5.8s linear infinite;
+}
+
+.vignetteLayer {
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 54%, rgba(0, 0, 0, 0.38) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.26) 100%);
+}
+
+@keyframes scanlineShift {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 900px) {
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .paletteButtons {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .terminalHost,
+  .terminalFrame {
+    height: 290px;
+    min-height: 290px;
+  }
+
+  .toolbarTitle {
+    font-size: 0.67rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanlineLayer {
+    animation: none;
+  }
+}

@@ -1,114 +1,213 @@
-.sidebar {
+﻿.sidebar {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 1rem;
 }
 
 .widget {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--panel-bg-strong) 86%, transparent);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
 }
 
 .widget h3 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #3498db;
-  color: var(--text-color);
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+  color: color-mix(in srgb, var(--accent-secondary) 60%, var(--text-primary));
+}
+
+.timePanel {
+  padding: 0.7rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  background: color-mix(in srgb, var(--panel-bg) 85%, transparent);
+}
+
+.timeValue {
+  font-family: var(--font-code);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.timeDate {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+  margin-top: 0.7rem;
+}
+
+.metricCard {
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+  background: color-mix(in srgb, var(--panel-bg) 85%, transparent);
+}
+
+.metricCard p {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.metricCard strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.02rem;
+  color: var(--text-primary);
 }
 
 .authorInfo {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 0.8rem;
   align-items: center;
-  text-align: center;
-  gap: 10px;
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px solid #3498db;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 36%, transparent);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--accent-secondary) 22%, transparent);
 }
 
-.socialLinks {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.socialLinks a {
-  display: inline-block;
-  padding: 8px 15px;
-  background: #3498db;
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
+.authorInfo p,
+.widgetText {
+  color: var(--text-secondary);
   font-size: 0.9rem;
-  transition: background 0.2s;
-}
-
-.socialLinks a:hover {
-  background: #2980b9;
-}
-
-.ctaWidget {
-  background: var(--card-bg);  
-  border: 1px solid var(--border-color);
 }
 
 .subscribeForm {
+  margin-top: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
+  gap: 0.6rem;
 }
 
 .subscribeForm input {
-  padding: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-size: 1rem;
-  background: var(--card-bg);
-  color: var(--text-color);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--panel-bg) 82%, transparent);
+}
+
+.subscribeForm input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .subscribeForm button {
-  padding: 10px;
-  background: #3498db;
-  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
+  padding: 0.62rem 0.8rem;
+  font-weight: 700;
+  color: var(--accent-text);
+  background: linear-gradient(115deg, var(--accent) 0%, var(--accent-secondary) 100%);
   cursor: pointer;
-  font-size: 1rem;
+  transition: transform 200ms ease;
 }
 
 .subscribeForm button:hover {
-  background: #2980b9;
+  transform: translateY(-1px);
 }
 
-.partners {
+.partnerGrid {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.partnerItem {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 15px;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  border-radius: 10px;
+  border: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--panel-bg) 82%, transparent);
+  padding: 0.55rem;
+  transition: transform 220ms ease, border-color 220ms ease;
 }
 
-.partners img {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+.partnerItem:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent-secondary) 55%, transparent);
 }
 
-/* 移动端调整 */
-@media (max-width: 768px) {
+.partnerItem img {
+  max-width: 130px;
+  max-height: 28px;
+  object-fit: contain;
+  filter: saturate(1.1);
+}
+
+.links {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 0.58rem 0.72rem;
+  transition: border-color 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.links a::after {
+  content: '>>';
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+}
+
+.links a:hover {
+  color: var(--text-primary);
+  border-color: color-mix(in srgb, var(--accent-secondary) 50%, transparent);
+  transform: translateX(2px);
+}
+
+@media (max-width: 1060px) {
   .sidebar {
-    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .widget {
+    padding: 0.85rem;
+  }
+
+  .authorInfo {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
   }
 }

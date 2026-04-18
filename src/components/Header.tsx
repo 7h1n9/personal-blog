@@ -1,24 +1,35 @@
-import React from 'react';
+﻿import React from 'react';
 import styles from './Header.module.css';
-import { useTheme } from '../context/ThemeContext'; // 使用自定义 Hook
+import { useTheme } from '../context/ThemeContext';
 
-// 定义组件接收的 Props 类型
 interface HeaderProps {
-  title: string; // 接收一个字符串类型的 title
+  title: string;
 }
 
-// 使用解构赋值从 props 中取出 title
 const Header: React.FC<HeaderProps> = ({ title }) => {
   const { theme, toggleTheme } = useTheme();
+  const today = new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long'
+  }).format(new Date());
 
   return (
     <header className={styles.header}>
-      {/* 使用从父组件传来的 title */}
-      <h1>{title}</h1>
-      <p>分享前端知识和心得</p>
-      <button onClick={toggleTheme} className={styles.themeButton}>
-        {theme === 'light' ? '🌙 暗黑模式' : '☀️ 明亮模式'}
-      </button>
+      <div className={styles.titleGroup}>
+        <span className={styles.status}>SYSTEM ONLINE</span>
+        <h1>{title}</h1>
+        <p>记录前端工程、性能调优与产品构建的实时实验日志。</p>
+      </div>
+
+      <div className={styles.headerPanel}>
+        <p className={styles.dateText}>{today}</p>
+        <p className={styles.signalText}>Signal Strength: 98%</p>
+        <button onClick={toggleTheme} className={styles.themeButton}>
+          {theme === 'light' ? '切换暗色矩阵' : '切换明亮模式'}
+        </button>
+      </div>
     </header>
   );
 };

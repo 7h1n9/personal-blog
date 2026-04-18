@@ -1,0 +1,680 @@
+﻿.page {
+  border: 1px solid var(--panel-border);
+  border-radius: 22px;
+  padding: clamp(1rem, 2vw, 1.6rem);
+  background: color-mix(in srgb, var(--panel-bg-strong) 85%, transparent);
+  box-shadow: var(--shadow-card);
+}
+
+.pageTitle {
+  font-family: var(--font-heading);
+  letter-spacing: 0.06em;
+  font-size: clamp(1.3rem, 2.1vw, 2rem);
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.pageIntro {
+  margin-top: 0.7rem;
+  max-width: 72ch;
+  color: var(--text-secondary);
+}
+
+.homeHero {
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+  border-radius: 18px;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  background:
+    linear-gradient(130deg, color-mix(in srgb, var(--accent) 20%, transparent) 0%, transparent 40%),
+    linear-gradient(120deg, transparent 0%, color-mix(in srgb, var(--accent-secondary) 16%, transparent) 100%);
+}
+
+.homeBadge {
+  display: inline-block;
+  font-family: var(--font-code);
+  font-size: 0.76rem;
+  letter-spacing: 0.07em;
+  padding: 0.25rem 0.62rem;
+  border-radius: 999px;
+  color: var(--accent-secondary);
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 52%, transparent);
+}
+
+.homeActions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 700;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.primaryButton {
+  color: var(--accent-text);
+  background: linear-gradient(115deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 36%, transparent);
+}
+
+.primaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.secondaryButton {
+  color: var(--text-primary);
+  border: 1px solid var(--panel-border);
+  background: color-mix(in srgb, var(--panel-bg) 88%, transparent);
+}
+
+.secondaryButton:hover {
+  border-color: color-mix(in srgb, var(--accent-secondary) 44%, transparent);
+  transform: translateY(-1px);
+}
+
+.statGrid {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.statCard {
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 0.85rem;
+  background: color-mix(in srgb, var(--panel-bg) 80%, transparent);
+}
+
+.statCard p {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.statCard strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+}
+
+.sectionHeading {
+  margin-top: 1.3rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--accent-secondary) 48%, var(--text-primary));
+}
+
+.homeTerminalPanel {
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-radius: 18px;
+  padding: 0.65rem;
+  background:
+    linear-gradient(140deg, color-mix(in srgb, var(--accent-secondary) 13%, transparent) 0%, transparent 45%),
+    color-mix(in srgb, var(--panel-bg) 88%, transparent);
+}
+
+.terminalLoading {
+  margin: 0;
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px dashed color-mix(in srgb, var(--accent-secondary) 42%, transparent);
+  color: var(--text-secondary);
+  font-family: var(--font-code);
+  letter-spacing: 0.05em;
+}
+
+.featuredGrid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.timeline {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.articleCard {
+  border-radius: 16px;
+  border: 1px solid var(--line-soft);
+  padding: 1rem;
+  background: color-mix(in srgb, var(--panel-bg) 88%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.articleCard::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.articleCard:hover::before {
+  opacity: 1;
+}
+
+.articleCard h2 {
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+}
+
+.articleCard h2 a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.articleCard h2 a:hover {
+  color: var(--accent);
+}
+
+.meta {
+  margin-top: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-family: var(--font-code);
+}
+
+.articleCard p {
+  margin-top: 0.65rem;
+  color: var(--text-secondary);
+}
+
+.tagRow {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tagChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--text-primary);
+  font-size: 0.74rem;
+}
+
+.readMore {
+  margin-top: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.readMore::after {
+  content: '->';
+  font-family: var(--font-code);
+}
+
+.articleDetail {
+  padding: clamp(1rem, 2.5vw, 1.8rem);
+}
+
+.articleHeader {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.articleLead {
+  margin-top: 0.75rem;
+  color: var(--text-secondary);
+  max-width: 72ch;
+}
+
+.section {
+  margin-top: 1.15rem;
+  padding: 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--panel-bg) 84%, transparent);
+}
+
+.section h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.sectionBody {
+  margin-top: 0.65rem;
+  display: grid;
+  gap: 0.58rem;
+}
+
+.sectionParagraph {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.72;
+}
+
+.sectionSubheading {
+  margin: 0.15rem 0 0;
+  width: fit-content;
+  padding: 0.2rem 0.56rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 35%, transparent);
+  background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
+  color: var(--text-primary);
+  font-family: var(--font-code);
+  font-size: 0.77rem;
+  letter-spacing: 0.04em;
+}
+
+.sectionList {
+  margin: 0.1rem 0 0 1rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+}
+
+.sectionList li {
+  line-height: 1.68;
+}
+
+.sectionKeyValue {
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 0.62rem 0.74rem;
+  background: color-mix(in srgb, var(--panel-bg) 88%, transparent);
+  display: grid;
+  gap: 0.36rem;
+}
+
+.sectionKey {
+  color: var(--text-primary);
+  font-family: var(--font-code);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+
+.sectionValue {
+  color: var(--text-secondary);
+  line-height: 1.64;
+}
+
+.sectionTableWrap {
+  overflow-x: auto;
+  margin-top: 0.15rem;
+}
+
+.sectionTable {
+  min-width: 520px;
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sectionTableHeader,
+.sectionTableRow {
+  display: grid;
+  grid-template-columns: repeat(var(--table-columns, 2), minmax(0, 1fr));
+}
+
+.sectionTableHeader span {
+  padding: 0.5rem 0.62rem;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.sectionTableRow span {
+  padding: 0.55rem 0.62rem;
+  color: var(--text-secondary);
+  line-height: 1.56;
+  background: color-mix(in srgb, var(--panel-bg) 90%, transparent);
+}
+
+.sectionTableRow:nth-child(even) span {
+  background: color-mix(in srgb, var(--accent-secondary) 8%, var(--panel-bg) 92%);
+}
+
+.sectionTableHeader span + span,
+.sectionTableRow span + span {
+  border-left: 1px solid var(--line-soft);
+}
+
+.sectionTableRow span {
+  border-top: 1px solid var(--line-soft);
+}
+
+.codeBlock {
+  margin-top: 0.75rem;
+  position: relative;
+  background: var(--code-bg);
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+  color: #d8edff;
+  padding: 1.7rem 0.8rem 0.8rem;
+  overflow-x: auto;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.codeBlock::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0.45rem;
+  right: 0.55rem;
+  font-family: var(--font-code);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, #d8edff 80%, transparent);
+}
+
+.articleFooter {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 0.8rem;
+}
+
+.aboutGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.aboutPanel {
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: color-mix(in srgb, var(--panel-bg) 82%, transparent);
+}
+
+.aboutPanel h3 {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+.aboutPanel p,
+.aboutPanel li {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.aboutPanel ul {
+  margin-left: 1.1rem;
+}
+
+.aboutGridFullRow {
+  grid-column: 1 / -1;
+}
+
+.profileMeta {
+  margin-top: 0.55rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 220px);
+  align-items: start;
+  gap: 1rem;
+}
+
+.profileMetaText p {
+  margin-top: 0.45rem;
+}
+
+.mbtiLead {
+  line-height: 1.6;
+}
+
+.mbtiTraitList {
+  margin-top: 0.55rem;
+  margin-left: 1.1rem;
+  display: grid;
+  gap: 0.38rem;
+}
+
+.mbtiTraitList li {
+  margin-top: 0;
+}
+
+.profileMetaVisual {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profileMeta p strong {
+  color: var(--text-primary);
+  font-family: var(--font-code);
+  letter-spacing: 0.04em;
+}
+
+.mbtiImage {
+  width: 100%;
+  max-width: 172px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 40%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.singerCards {
+  margin-top: 0.7rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.singerCard {
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--panel-bg) 90%, transparent);
+  padding: 0.75rem 0.6rem 0.68rem;
+  display: grid;
+  justify-items: center;
+  gap: 0.58rem;
+}
+
+.singerImage {
+  width: min(100%, 112px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--accent-secondary) 48%, transparent);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--accent-secondary) 14%, transparent),
+    0 10px 20px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+.singerName {
+  margin: 0;
+  font-family: var(--font-code);
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.personalTags {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.personalTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.58rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+  background: color-mix(in srgb, var(--accent-secondary) 14%, transparent);
+  color: var(--text-primary);
+  font-size: 0.76rem;
+}
+
+.aboutHighlight {
+  margin-top: 0.9rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 38%, transparent);
+  background: color-mix(in srgb, var(--accent-secondary) 14%, transparent);
+  color: var(--text-primary);
+}
+
+.subscribePanel {
+  margin-top: 0.9rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--panel-bg) 88%, transparent);
+}
+
+.subscribeForm {
+  margin-top: 0.85rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.inputGroup {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.emailInput {
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 0.72rem 0.78rem;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--panel-bg) 85%, transparent);
+}
+
+.emailInput:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--accent) 64%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.submitButton {
+  border: none;
+  border-radius: 10px;
+  padding: 0.72rem 0.9rem;
+  font-weight: 700;
+  color: var(--accent-text);
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  filter: brightness(1.03);
+}
+
+.privacyNotice {
+  margin-top: 0.8rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--line-soft);
+}
+
+.subscribedMessage {
+  margin-top: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 42%, transparent);
+  border-radius: 14px;
+  padding: 0.95rem;
+  background: color-mix(in srgb, var(--accent-secondary) 15%, transparent);
+}
+
+.notFoundWrap {
+  text-align: center;
+  display: grid;
+  gap: 0.95rem;
+  justify-items: center;
+  padding-block: clamp(1.2rem, 8vw, 4rem);
+}
+
+.glitchCode {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 12vw, 6rem);
+  color: color-mix(in srgb, var(--accent-secondary) 55%, var(--text-primary));
+  letter-spacing: 0.14em;
+  text-shadow:
+    2px 0 color-mix(in srgb, var(--accent) 80%, transparent),
+    -2px 0 color-mix(in srgb, var(--accent-secondary) 80%, transparent);
+  animation: flicker 2.2s infinite ease-in-out;
+}
+
+.backHomeLink {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+}
+
+@keyframes flicker {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+
+  72% {
+    opacity: 0.45;
+  }
+
+  73% {
+    opacity: 0.95;
+  }
+
+  74% {
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 880px) {
+  .statGrid,
+  .aboutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .profileMeta {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .profileMetaVisual {
+    justify-content: flex-start;
+  }
+
+  .singerCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .singerCards {
+    grid-template-columns: 1fr;
+  }
+}

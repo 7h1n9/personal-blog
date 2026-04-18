@@ -1,37 +1,60 @@
-import React, { createContext, useContext, useState, type ReactNode } from 'react';
+﻿import React, { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
 
-// 定义主题类型
 type Theme = 'light' | 'dark';
 
-// 定义 Context 中提供的数据结构
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
 }
 
-// 创建 Context（初始值为 undefined，便于检查是否被正确使用）
+const STORAGE_KEY = 'personal-blog-theme';
+
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-// 自定义 Hook，方便消费
-export const useTheme = () => {
+const getInitialTheme = (): Theme => {
+  if (typeof window === 'undefined') {
+    return 'dark';
+  }
+
+  const savedTheme = window.localStorage.getItem(STORAGE_KEY);
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    return savedTheme;
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error('useTheme must be used within a ThemeProvider.');
   }
   return context;
 };
 
-// Provider 组件，包裹需要共享主题的组件树
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  const updateTheme = (nextTheme: Theme) => {
+    setTheme(nextTheme);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEY, nextTheme);
+    }
   };
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+  const toggleTheme = () => {
+    updateTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  const contextValue = useMemo(
+    () => ({
+      theme,
+      toggleTheme,
+      setTheme: updateTheme
+    }),
+    [theme]
   );
+
+  return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 };

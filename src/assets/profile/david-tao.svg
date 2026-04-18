@@ -1,0 +1,15 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#25161A"/>
+      <stop offset="1" stop-color="#6A3E2E"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="26" fill="url(#bg)"/>
+  <circle cx="496" cy="182" r="84" fill="#F5D2A8" fill-opacity="0.24"/>
+  <circle cx="496" cy="182" r="52" stroke="#FFDDB3" stroke-width="10"/>
+  <rect x="478" y="76" width="36" height="212" rx="18" fill="#FFE2C5" fill-opacity="0.72"/>
+  <text x="54" y="106" fill="#FFEED8" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">FAVORITE ARTIST</text>
+  <text x="54" y="202" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="70" font-weight="800">DAVID TAO</text>
+  <text x="54" y="260" fill="#F9DAB7" font-family="Consolas, monospace" font-size="24">R&amp;B / soul / classic mandopop</text>
+</svg>

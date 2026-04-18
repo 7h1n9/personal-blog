@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13203A"/>
+      <stop offset="1" stop-color="#2E4E7B"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="26" fill="url(#bg)"/>
+  <path d="M58 274C129 177 213 126 310 122C375 120 429 140 472 183" stroke="#8ED0FF" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="515" cy="103" r="48" fill="#D8ECFF" fill-opacity="0.85"/>
+  <text x="54" y="106" fill="#F2F8FF" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">FAVORITE ARTIST</text>
+  <text x="54" y="202" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="66" font-weight="800">YORUSHIKA</text>
+  <text x="54" y="260" fill="#CBE6FF" font-family="Consolas, monospace" font-size="24">night mood / guitar / story lyric</text>
+</svg>
