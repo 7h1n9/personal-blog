@@ -1,9 +1,10 @@
-﻿import React, { useEffect } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
+import EntryGate from './components/EntryGate';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import HomePage from './pages/HomePage';
 import ArticlesPage from './pages/ArticlesPage';
@@ -91,6 +92,7 @@ const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
 const AppShell: React.FC = () => {
   const location = useLocation();
+  const [entryGateOpen, setEntryGateOpen] = useState(true);
 
   if (location.pathname === '/rm-rm') {
     return <WhiteoutPage />;
@@ -102,6 +104,7 @@ const AppShell: React.FC = () => {
 
   return (
     <>
+      <EntryGate open={entryGateOpen} onEnter={() => setEntryGateOpen(false)} />
       <div className={`${styles.sideCodeField} ${styles.sideCodeFieldLeft}`} aria-hidden="true">
         {EDGE_CODE_STREAMS.map((stream, index) => (
           <span
@@ -189,3 +192,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
