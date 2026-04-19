@@ -1,4 +1,4 @@
-import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import { writeFileSync, existsSync, mkdirSync, copyFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createJiti } from 'jiti';
@@ -17,8 +17,8 @@ const { getArticles } = await jiti.import('./src/data/articles.ts');
 const articles = getArticles(); // 返回 Article[]
 
 // ========== 配置区域 ==========
-// 部署域名（请修改为你的实际域名）
-const BASE_URL = 'https://你的用户名.github.io/personal-blog';
+// 部署域名
+const BASE_URL = 'https://7h1n9.github.io/personal-blog';
 // 静态路由列表
 const staticRoutes = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
@@ -75,13 +75,21 @@ ${sitemapEntries.map(entry => `  <url>
   </url>`).join('\n')}
 </urlset>`;
 
-// 确保 public 目录存在
-const publicDir = resolve(process.cwd(), 'public');
-if (!existsSync(publicDir)) {
-  mkdirSync(publicDir, { recursive: true });
+// 确保 dist 目录存在（GitHub Pages 实际部署目录）
+const distDir = resolve(process.cwd(), 'dist');
+if (!existsSync(distDir)) {
+  mkdirSync(distDir, { recursive: true });
 }
 
-// 写入 sitemap.xml 到 public 目录
-const sitemapPath = resolve(publicDir, 'sitemap.xml');
+// 写入 sitemap.xml 到 dist 目录
+const sitemapPath = resolve(distDir, 'sitemap.xml');
 writeFileSync(sitemapPath, sitemapXml);
 console.log('✅ sitemap.xml 已生成:', sitemapPath);
+
+// GitHub Pages SPA 兜底：将 index.html 复制为 404.html
+const indexPath = resolve(distDir, 'index.html');
+const fallback404Path = resolve(distDir, '404.html');
+if (existsSync(indexPath)) {
+  copyFileSync(indexPath, fallback404Path);
+  console.log('✅ 404.html 已生成（SPA fallback）:', fallback404Path);
+}
