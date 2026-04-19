@@ -30,9 +30,9 @@ const HomePage: React.FC = () => {
         <ScrollReveal>
           <section className={styles.homeHero}>
             <span className={styles.homeBadge}>FUTURE FEED v2.6</span>
-            <h1 className={styles.pageTitle}>欢迎来到未来感博客指挥台</h1>
+            <h1 className={styles.pageTitle}>欢迎来到未来博客控制台</h1>
             <p className={styles.pageIntro}>
-              这里持续输出前端架构、交互设计和性能优化实战，内容以可落地方案为核心，不做空泛概念。
+              这里持续输出网络安全、渗透测试实战，内容以可落地方案为核心，不做空泛概念。
             </p>
             <div className={styles.homeActions}>
               <Link to="/articles" className={styles.primaryButton}>

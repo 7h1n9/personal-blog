@@ -24,7 +24,7 @@ const SubscribePage: React.FC = () => {
     <>
       <Helmet>
         <title>订阅通道 | NEON STACK BLOG</title>
-        <meta name="description" content="订阅每周技术更新，获取前端工程实战与交互动效拆解。" />
+        <meta name="description" content="订阅每周技术更新，获取安全工程实战与渗透分析拆解。" />
       </Helmet>
 
       <div className={styles.page}>
