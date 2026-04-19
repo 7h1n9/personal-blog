@@ -160,7 +160,7 @@ const AboutPage: React.FC = () => {
           <h1 className={styles.pageTitle}>作者档案</h1>
         </ScrollReveal>
         <ScrollReveal delay={100}>
-          <p className={styles.pageIntro}>这不是简历页，而是一份持续更新的网络安全研究日志。</p>
+          <p className={styles.pageIntro}>这不是个人简介页（骗你的这就是简介页）</p>
         </ScrollReveal>
 
         <section className={styles.aboutGrid}>
