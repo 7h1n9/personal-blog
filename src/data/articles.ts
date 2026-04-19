@@ -13,7 +13,7 @@ const articlesData: Article[] = [
     "id": 1,
     "title": "nettool",
     "date": "2026-04-19",
-    "author": "7h1n9",
+    "author": "XXX",
     "summary": "本题涉及一个 pythonWeb 应用，具有“管理员网络工具（Admin NetTools）”功能。通过对该功能的深度挖掘，我们发现了隐藏的内网服务，并利用前沿的 MCP（Model Context Protocol） 协议漏洞最终获取了 Flag。",
     "contentSections": [
       {
@@ -64,7 +64,7 @@ const articlesData: Article[] = [
     "id": 2,
     "title": "网络攻击案例分析",
     "date": "2026-04-18",
-    "author": "7h1n9",
+    "author": "XXX",
     "summary": "DDoS（Distributed Denial of Service）：利用大量被控制的“肉鸡”（僵尸主机）协同发起攻击，攻击强度呈指数级增长。",
     "contentSections": [
       {
@@ -108,7 +108,7 @@ const articlesData: Article[] = [
     "id": 3,
     "title": "黑客常用工具分析",
     "date": "2026-04-17",
-    "author": "7h1n9",
+    "author": "XXX",
     "summary": "扫描器是黑客进行信息收集阶段最基础、最重要的工具之一。通过扫描器，攻击者可以快速识别目标网络中的活跃主机、开放端口以及潜在的软件漏洞。",
     "contentSections": [
       {
