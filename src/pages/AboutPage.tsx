@@ -140,8 +140,8 @@ const aboutPanels = [
     title: '联系通道',
     content: (
       <>
-        <p>mail: 7h1n9@example.com</p>
-        <p>github: github.com/7h1n9</p>
+        <p>mail: XXX@example.com</p>
+        <p>github: github.com/XXXX</p>
       </>
     )
   }
